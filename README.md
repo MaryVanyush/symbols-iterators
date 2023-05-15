@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/kgd90m43w8nmmo57?svg=true)](https://ci.appveyor.com/project/MaryVanyush/symbols-iterators)
