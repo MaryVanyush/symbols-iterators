@@ -21,13 +21,30 @@ export default class Team {
 
   iterator() {
     const team = {};
-    let index = 0;
+    let key = 0;
     for (const value of this.members) {
-      team[index] = value;
-      index += 1;
+      team[key] = value;
+      key += 1;
     }
     team.length = this.members.size;
-    team[Symbol.iterator] = [][Symbol.iterator];
+    team[Symbol.iterator] = function () {
+      let index = 0;
+      const values = Object.values(this);
+      return {
+        next() {
+          if (index < values.length) {
+            return {
+              done: false,
+              // eslint-disable-next-line
+              value: values[index++],
+            };
+          }
+          return {
+            done: true,
+          };
+        },
+      };
+    };
     for (const value of team) {
       // eslint-disable-next-line
       console.log(value);
